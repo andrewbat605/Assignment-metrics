@@ -1,1 +1,48 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+public class CalculateTest {
+
+    @Test
+    public void calculate_ShouldHandleAdditionAndMultiplication() {
+        List<Float> numbers = new ArrayList<>(Arrays.asList(2.0f, 3.0f, 4.0f, 6.0f));
+        List<String> operations = new ArrayList<>(Arrays.asList("+", "*", "-"));
+        Calculate(numbers, operations);
+        assertEquals(-4.0f, finalResult, 0.001f);
+    }
+
+    @Test
+    public void calculate_ShouldHandleDivisionAndSubtraction() {
+        List<Float> numbers = new ArrayList<>(Arrays.asList(10.0f, 2.0f, 3.0f));
+        List<String> operations = new ArrayList<>(Arrays.asList("/", "+"));
+        Calculate(numbers, operations);
+        assertEquals(8.0f, finalResult, 0.001f);
+    }
+
+    @Test
+    public void calculate_ShouldHandleMultipleOperations() {
+        List<Float> numbers = new ArrayList<>(Arrays.asList(2.0f, 3.0f, 4.0f, 2.0f));
+        List<String> operations = new ArrayList<>(Arrays.asList("*", "+", "/"));
+        Calculate(numbers, operations);
+        assertEquals(5.0f, finalResult, 0.001f);
+    }
+
+    @Test
+    public void calculate_ShouldHandleSingleNumber() {
+        List<Float> numbers = new ArrayList<>(Arrays.asList(10.0f));
+        List<String> operations = new ArrayList<>();
+        Calculate(numbers, operations);
+        assertEquals(10.0f, finalResult, 0.001f);
+    }
+
+    @Test
+    public void calculate_ShouldHandleEmptyInput() {
+        List<Float> numbers = new ArrayList<>();
+        List<String> operations = new ArrayList<>();
+        Calculate(numbers, operations);
+        assertEquals(0.0f, finalResult, 0.001f);
+    }
+}
